@@ -1,7 +1,5 @@
 import initialUsers from "../data/users.json";
 import { storageService } from "../services/storageService";
-
-
 import type {
   LoginCredentials,
   User,
@@ -44,6 +42,11 @@ export const authRepository = {
   },
 
 
+  logout(): void {
+    storageService.remove(SESSION_KEY);
+  },
+
+
   getCurrentUser(): User | null {
     return storageService.get<User>(SESSION_KEY);
   },
@@ -51,10 +54,5 @@ export const authRepository = {
 
   isAuthenticated(): boolean {
     return this.getCurrentUser() !== null;
-  },
-
-
-  logout(): void {
-    storageService.remove(SESSION_KEY);
   },
 };

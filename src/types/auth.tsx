@@ -18,3 +18,4 @@ export interface LoginCredentials {
   carnet: string;
   password: string;
 }
+
