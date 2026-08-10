@@ -5,6 +5,7 @@ export interface User {
   id: string;
   name: string;
   carnet: string;
+  email: string;
   role: UserRole;
 }
 
@@ -15,7 +16,7 @@ export interface UserRecord extends User {
 
 
 export interface LoginCredentials {
-  carnet: string;
+  email: string;
   password: string;
 }
 

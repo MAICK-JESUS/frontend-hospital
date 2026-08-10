@@ -17,7 +17,7 @@ export const authRepository = {
   login(credentials: LoginCredentials): User | null {
     const foundUser = users.find(
       (user) =>
-        user.carnet === credentials.carnet &&
+        user.email.toLowerCase() === credentials.email
         user.password === credentials.password
     );
 
@@ -31,6 +31,7 @@ export const authRepository = {
       id: foundUser.id,
       name: foundUser.name,
       carnet: foundUser.carnet,
+      email: foundUser.email,
       role: foundUser.role,
     };
 
