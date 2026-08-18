@@ -1,0 +1,44 @@
+.login-page {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+  padding: 2rem;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top left, rgba(48, 145, 196, 0.28), transparent 28rem),
+    radial-gradient(circle at bottom right, rgba(32, 178, 170, 0.2), transparent 24rem),
+    linear-gradient(135deg, #eff7fb 0%, #f7fbff 48%, #e9f3f8 100%);
+}
+
+.login-page::before {
+  position: fixed;
+  inset: 2rem auto auto 4rem;
+  width: 11rem;
+  height: 11rem;
+  content: "";
+  border-radius: 999px;
+  background: rgba(15, 118, 160, 0.12);
+  filter: blur(2px);
+}
+
+.login-page::after {
+  position: fixed;
+  right: 6rem;
+  bottom: 4rem;
+  width: 15rem;
+  height: 15rem;
+  content: "";
+  border: 1px solid rgba(21, 32, 51, 0.08);
+  border-radius: 999px;
+}
+
+@media (max-width: 520px) {
+  .login-page {
+    padding: 1rem;
+  }
+
+  .login-page::before,
+  .login-page::after {
+    display: none;
+  }
+}
