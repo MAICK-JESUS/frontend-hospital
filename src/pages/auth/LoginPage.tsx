@@ -3,6 +3,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 
 import LoginForm from "../../components/auth/LoginForm";
+import "./LoginPage.css";
 import { authRepository } from "../../repositories/authRepository";
 
 
@@ -37,11 +38,8 @@ function LoginPage() {
 
 
   return (
-    <main>
-      <LoginForm
-        error={error}
-        onSubmit={handleLogin}
-      />
+    <main className="login-page">
+      <LoginForm error={error} onSubmit={handleLogin} />
     </main>
   );
 }

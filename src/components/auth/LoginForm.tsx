@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { FormEventHandler } from "react";
 import type { LoginCredentials } from "../../types/auth";
+import "./LoginForm.css";
 
 
 interface LoginFormProps {
@@ -34,12 +35,16 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Iniciar sesión</h1>
+    <form className="login-card" onSubmit={handleSubmit}>
+      <div className="login-card__header">
+        <p className="login-card__eyebrow">Hospital care</p>
+        <h1>Iniciar sesión</h1>
+        <p className="login-card__subtitle">Accede de forma segura al panel de gestión hospitalaria.</p>
+      </div>
 
 
-      <div>
-         <label htmlFor="email">Correo electrónico</label>
+      <div className="login-form__field">
+        <label htmlFor="email">Correo electrónico</label>
 
 
         <input
@@ -54,7 +59,7 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
       </div>
 
 
-      <div>
+      <div className="login-form__field">
         <label htmlFor="password">Contraseña</label>
 
 
@@ -72,13 +77,13 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
 
 
       {error && (
-        <p role="alert" aria-live="polite">
+        <p className="login-form__alert" role="alert" aria-live="polite">
           {error}
         </p>
       )}
 
 
-      <button type="submit">Ingresar</button>
+      <button className="login-form__button" type="submit">Ingresar</button>
     </form>
   );
 }

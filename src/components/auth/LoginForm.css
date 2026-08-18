@@ -1,0 +1,124 @@
+.login-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 28rem);
+  padding: 2.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 1.75rem;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 1.5rem 4rem rgba(27, 62, 83, 0.16);
+  backdrop-filter: blur(18px);
+}
+
+.login-card__header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.login-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 0.85rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  color: #0f6b86;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(15, 107, 134, 0.1);
+}
+
+.login-card h1 {
+  margin: 0;
+  color: #14223a;
+  font-size: clamp(2rem, 7vw, 2.65rem);
+  line-height: 1.05;
+}
+
+.login-card__subtitle {
+  margin: 0.85rem 0 0;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.login-form__field {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1.15rem;
+}
+
+.login-form__field label {
+  color: #24364f;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.login-form__field input {
+  width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid #d8e2ea;
+  border-radius: 0.95rem;
+  color: #152033;
+  outline: none;
+  background: #fbfdff;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.login-form__field input::placeholder {
+  color: #97a6b7;
+}
+
+.login-form__field input:focus {
+  border-color: #1689ad;
+  box-shadow: 0 0 0 4px rgba(22, 137, 173, 0.14);
+  transform: translateY(-1px);
+}
+
+.login-form__alert {
+  margin: 0.25rem 0 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(220, 38, 38, 0.18);
+  border-radius: 0.9rem;
+  color: #b42318;
+  font-weight: 600;
+  background: #fff1f0;
+}
+
+.login-form__button {
+  width: 100%;
+  margin-top: 0.45rem;
+  padding: 1rem 1.25rem;
+  border: 0;
+  border-radius: 1rem;
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  background: linear-gradient(135deg, #0f6b86, #13a4a2);
+  box-shadow: 0 1rem 1.8rem rgba(15, 107, 134, 0.25);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    filter 180ms ease;
+}
+
+.login-form__button:hover {
+  box-shadow: 0 1.15rem 2.1rem rgba(15, 107, 134, 0.32);
+  filter: saturate(1.08);
+  transform: translateY(-2px);
+}
+
+.login-form__button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 520px) {
+  .login-card {
+    padding: 1.5rem;
+    border-radius: 1.35rem;
+  }
+}
