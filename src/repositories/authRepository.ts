@@ -17,7 +17,7 @@ export const authRepository = {
   login(credentials: LoginCredentials): User | null {
     const foundUser = users.find(
       (user) =>
-        user.email.toLowerCase() === credentials.email
+        user.email.toLowerCase() === credentials.email &&
         user.password === credentials.password
     );
 
