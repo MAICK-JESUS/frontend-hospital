@@ -1,6 +1,7 @@
 export const scheduledMatches = [
   {
     id: 1,
+    date: "2026-08-19",
     date: "2026-08-22",
     time: "18:00",
     homeTeam: "Halcones FC",
@@ -9,6 +10,15 @@ export const scheduledMatches = [
   },
   {
     id: 2,
+
+    date: "2026-08-19",
+    time: "20:00",
+    homeTeam: "Real Capital",
+    awayTeam: "Unión Andina",
+    venue: "Arena Metropolitana",
+  },
+  {
+    id: 3,
     date: "2026-08-23",
     time: "19:30",
     homeTeam: "Guerreros del Sur",
@@ -16,6 +26,8 @@ export const scheduledMatches = [
     venue: "Polideportivo Municipal",
   },
   {
+
+    id: 4,
     id: 3,
     date: "2026-08-24",
     time: "20:00",
@@ -24,6 +36,7 @@ export const scheduledMatches = [
     venue: "Arena Metropolitana",
   },
   {
+    id: 5,
     id: 4,
     date: "2026-08-25",
     time: "17:45",
