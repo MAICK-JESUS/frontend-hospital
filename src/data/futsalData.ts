@@ -2,6 +2,7 @@ export const scheduledMatches = [
   {
     id: 1,
     date: "2026-08-19",
+    date: "2026-08-22",
     time: "18:00",
     homeTeam: "Halcones FC",
     awayTeam: "Titanes Norte",
@@ -9,6 +10,7 @@ export const scheduledMatches = [
   },
   {
     id: 2,
+
     date: "2026-08-19",
     time: "20:00",
     homeTeam: "Real Capital",
@@ -24,7 +26,9 @@ export const scheduledMatches = [
     venue: "Polideportivo Municipal",
   },
   {
+
     id: 4,
+    id: 3,
     date: "2026-08-24",
     time: "20:00",
     homeTeam: "Futsal Oriente",
@@ -33,6 +37,7 @@ export const scheduledMatches = [
   },
   {
     id: 5,
+    id: 4,
     date: "2026-08-25",
     time: "17:45",
     homeTeam: "Deportivo Costa",

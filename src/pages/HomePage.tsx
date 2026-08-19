@@ -1,14 +1,18 @@
-import { Link, useNavigate } from "react-router-dom";
 
+import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import { authRepository } from "../repositories/authRepository";
 import { scheduledMatches, teamStandings } from "../data/futsalData";
 import "../styles/pages.css";
 
+
 const today = new Date().toISOString().slice(0, 10);
 const todaysMatches = scheduledMatches.filter((match) => match.date === today);
 const nextMatches = scheduledMatches.filter((match) => match.date > today).slice(0, 2);
 const leader = teamStandings[0];
+
+
 
 function HomePage() {
   const navigate = useNavigate();
@@ -20,6 +24,7 @@ function HomePage() {
   };
 
   return (
+
     <div className="page-shell home-shell">
       <Navbar />
       <main className="page-content home-content">
@@ -125,6 +130,28 @@ function HomePage() {
         )}
       </main>
     </div>
+    <>
+      <Navbar />
+      <main>
+        <h1>Página principal</h1>
+
+        {user ? (
+          <>
+            <p>Bienvenido, {user.name}</p>
+            <p>Email: {user.email}</p>
+            <p>Carnet: {user.carnet}</p>
+            <p>Rol: {user.role}</p>
+
+            <button type="button" onClick={handleLogout}>
+              Cerrar sesión
+            </button>
+          </>
+        ) : (
+          <p>No existe una sesión activa.</p>
+        )}
+      </main>
+    </>
+
   );
 }
 
