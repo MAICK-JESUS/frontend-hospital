@@ -1,9 +1,11 @@
-
 import { Link, useNavigate } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 import Navbar from "../components/Navbar";
+
 import { authRepository } from "../repositories/authRepository";
+
 import { scheduledMatches, teamStandings } from "../data/futsalData";
+
 import "../styles/pages.css";
 
 
@@ -24,8 +26,7 @@ function HomePage() {
   };
 
   return (
-
-    <div className="page-shell home-shell">
+ <div className="page-shell home-shell">
       <Navbar />
       <main className="page-content home-content">
         <section className="home-hero">
@@ -130,27 +131,6 @@ function HomePage() {
         )}
       </main>
     </div>
-    <>
-      <Navbar />
-      <main>
-        <h1>Página principal</h1>
-
-        {user ? (
-          <>
-            <p>Bienvenido, {user.name}</p>
-            <p>Email: {user.email}</p>
-            <p>Carnet: {user.carnet}</p>
-            <p>Rol: {user.role}</p>
-
-            <button type="button" onClick={handleLogout}>
-              Cerrar sesión
-            </button>
-          </>
-        ) : (
-          <p>No existe una sesión activa.</p>
-        )}
-      </main>
-    </>
 
   );
 }
