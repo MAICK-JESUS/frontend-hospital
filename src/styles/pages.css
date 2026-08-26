@@ -82,7 +82,7 @@
 
 .stats-table th,
 .stats-table td {
-  padding: 15px 18px;
+  padding: 15px 14px;
   text-align: left;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -93,6 +93,28 @@
   font-size: 13px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
+}
+
+.stats-table th:not(:nth-child(2)),
+.stats-table td:not(:nth-child(2)) {
+  text-align: center;
+}
+
+.stats-table td:nth-child(2) {
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.goal-difference {
+  font-weight: 900;
+}
+
+.goal-difference.positive {
+  color: #138a4a;
+}
+
+.goal-difference.negative {
+  color: #c62f2f;
 }
 
 .stats-table tr:last-child td {
@@ -113,6 +135,16 @@
   background: #18d26e;
   color: #101820;
   font-weight: 900;
+}
+
+@media (max-width: 800px) {
+  .table-card {
+    overflow-x: auto;
+  }
+
+  .stats-table {
+    min-width: 900px;
+  }
 }
 
 .team-count {
@@ -301,4 +333,3 @@
     font-size: 16px;
   }
 }
-
