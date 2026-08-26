@@ -9,7 +9,7 @@ function TeamsPage() {
       <main className="page-content">
         <section className="page-hero">
           <h1>Equipos</h1>
-          <p>Estos son los equipos registrados, su cantidad total y de dónde son.</p>
+          <p>Estos son los equipos de la Copa Bosco registrados en Sucre, Bolivia.</p>
         </section>
 
         <div className="team-count">Total de equipos: {teams.length}</div>

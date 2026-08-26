@@ -59,21 +59,26 @@ export const teamStandings = [
 ];
 
 export const playerStandings = [
-  { position: 1, player: "Mateo Rojas", team: "Halcones FC", goals: 15, assists: 7 },
-  { position: 2, player: "Lucas Méndez", team: "Real Capital", goals: 13, assists: 5 },
-  { position: 3, player: "Diego Paredes", team: "Titanes Norte", goals: 11, assists: 6 },
-  { position: 4, player: "Santiago Cruz", team: "Atlético Valle", goals: 10, assists: 8 },
-  { position: 5, player: "Nicolás Vera", team: "Unión Andina", goals: 9, assists: 4 },
-  { position: 6, player: "Emilio Torres", team: "Guerreros del Sur", goals: 8, assists: 5 },
+  { position: 1, player: "Mateo Rojas", team: "Barrio Antioquia", goals: 15, assists: 7 },
+  { position: 2, player: "Lucas Méndez", team: "Ignis Fenix", goals: 13, assists: 5 },
+  { position: 3, player: "Diego Paredes", team: "Papoi FC", goals: 11, assists: 6 },
+  { position: 4, player: "Santiago Cruz", team: "A.S Godnes", goals: 10, assists: 8 },
+  { position: 5, player: "Nicolás Vera", team: "Goat Island", goals: 9, assists: 4 },
+  { position: 6, player: "Emilio Torres", team: "San Marino", goals: 8, assists: 5 },
 ];
 
 export const teams = [
-  { name: "Halcones FC", origin: "Zona Centro", players: 12 },
-  { name: "Real Capital", origin: "Capital", players: 11 },
-  { name: "Titanes Norte", origin: "Zona Norte", players: 12 },
-  { name: "Atlético Valle", origin: "Valle Alto", players: 10 },
-  { name: "Unión Andina", origin: "Región Andina", players: 11 },
-  { name: "Guerreros del Sur", origin: "Zona Sur", players: 12 },
-  { name: "Futsal Oriente", origin: "Zona Oriente", players: 10 },
-  { name: "Deportivo Costa", origin: "Costa", players: 11 },
+  { name: "Barrio Antioquia", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Ignis Fenix", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Papoi FC", origin: "Sucre, Bolivia", players: 10 },
+  { name: "A.S Godnes", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Goat Island", origin: "Sucre, Bolivia", players: 10 },
+  { name: "San Marino", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Sleiffens", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Arnaldítos FC", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Champs FC", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Moba FC", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Bodo", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Team Plumas", origin: "Sucre, Bolivia", players: 10 },
+  { name: "Los Socios FC", origin: "Sucre, Bolivia", players: 10 },
 ];
