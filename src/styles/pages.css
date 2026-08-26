@@ -137,6 +137,7 @@
   font-weight: 900;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-mekn9w
 .edit-button,
 .primary-button,
 .secondary-button {
@@ -215,6 +216,8 @@
   color: #344256;
 }
 
+
+ main
 @media (max-width: 800px) {
   .table-card {
     overflow-x: auto;
@@ -223,10 +226,13 @@
   .stats-table {
     min-width: 900px;
   }
+codex/agregar-informacion-de-la-imagen-a-la-tabla-mekn9w
 
   .player-editor-fields {
     grid-template-columns: 1fr;
   }
+
+ main
 }
 
 .team-count {
