@@ -137,6 +137,10 @@
   font-weight: 900;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
+
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-mekn9w
+ main
 .edit-button,
 .primary-button,
 .secondary-button {
@@ -215,6 +219,11 @@
   color: #344256;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
+
+
+ main
+main
 @media (max-width: 800px) {
   .table-card {
     overflow-x: auto;
@@ -223,10 +232,19 @@
   .stats-table {
     min-width: 900px;
   }
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
+
+codex/agregar-informacion-de-la-imagen-a-la-tabla-mekn9w
+ main
 
   .player-editor-fields {
     grid-template-columns: 1fr;
   }
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
+
+
+ main
+ main
 }
 
 .team-count {
