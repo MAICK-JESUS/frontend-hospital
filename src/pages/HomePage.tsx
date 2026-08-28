@@ -1,20 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
-
 import { authRepository } from "../repositories/authRepository";
-
 import { scheduledMatches, teamStandings } from "../data/futsalData";
-
 import "../styles/pages.css";
-
 
 const today = new Date().toISOString().slice(0, 10);
 const todaysMatches = scheduledMatches.filter((match) => match.date === today);
 const nextMatches = scheduledMatches.filter((match) => match.date > today).slice(0, 2);
 const leader = teamStandings[0];
-
-
 
 function HomePage() {
   const navigate = useNavigate();
@@ -26,21 +20,28 @@ function HomePage() {
   };
 
   return (
- <div className="page-shell home-shell">
+    <div className="page-shell home-shell">
       <Navbar />
+
       <main className="page-content home-content">
         <section className="home-hero">
-          <div>
-            <p className="eyebrow">Liga de futsal</p>
-            <h1>Bienvenido a FUTSALPRO</h1>
-            <p>
-              Sigue los partidos de hoy, revisa la tabla de posiciones y consulta
-              el rendimiento de jugadores y equipos desde un solo lugar.
+          <div className="hero-decoration" aria-hidden="true">
+            <span className="hero-glow" />
+            <span className="spinning-ball">⚽</span>
+          </div>
+
+          <div className="hero-copy">
+            <p className="eyebrow">Liga de futsal · Temporada 2026</p>
+            <h1>Todo el futsal en un solo lugar.</h1>
+            <p className="hero-description">
+              Sigue los partidos, consulta la tabla de posiciones y descubre el
+              rendimiento de jugadores y equipos con una experiencia rápida,
+              moderna y profesional.
             </p>
 
             <div className="home-actions">
               <Link className="primary-link" to="/partidos">
-                Ver calendario
+                Ver partidos <span>→</span>
               </Link>
               <Link className="secondary-link" to="/tabla">
                 Ver posiciones
@@ -49,22 +50,30 @@ function HomePage() {
           </div>
 
           <aside className="session-card" aria-label="Información de sesión">
+            <div className="session-status">
+              <span className="status-dot" />
+              {user ? "Sesión activa" : "Modo invitado"}
+            </div>
+
             {user ? (
               <>
-                <span>Sesión activa</span>
                 <h2>{user.name}</h2>
                 <p>{user.email}</p>
-                <p>Carnet: {user.carnet}</p>
-                <p>Rol: {user.role}</p>
+                <div className="session-meta">
+                  <span>Carnet</span>
+                  <strong>{user.carnet}</strong>
+                  <span>Rol</span>
+                  <strong>{user.role}</strong>
+                </div>
                 <button type="button" onClick={handleLogout}>
                   Cerrar sesión
                 </button>
               </>
             ) : (
               <>
-                <span>Invitado</span>
-                <h2>No existe una sesión activa.</h2>
-                <Link className="primary-link" to="/login">
+                <h2>Únete a FUTSALPRO</h2>
+                <p>Inicia sesión para acceder a tu cuenta y gestionar tus datos.</p>
+                <Link className="primary-link session-login" to="/login">
                   Iniciar sesión
                 </Link>
               </>
@@ -74,56 +83,75 @@ function HomePage() {
 
         <section className="home-summary-grid" aria-label="Resumen de la liga">
           <article className="summary-card">
+            <div className="summary-icon">◷</div>
             <span>Partidos hoy</span>
             <strong>{todaysMatches.length}</strong>
             <p>Encuentros programados para la jornada actual.</p>
           </article>
-          <article className="summary-card">
+
+          <article className="summary-card summary-card-highlight">
+            <div className="summary-icon">★</div>
             <span>Líder actual</span>
             <strong>{leader.team}</strong>
             <p>{leader.points} puntos en la tabla general.</p>
           </article>
+
           <article className="summary-card">
+            <div className="summary-icon">⚡</div>
             <span>Próximos juegos</span>
             <strong>{nextMatches.length}</strong>
             <p>Partidos posteriores a la fecha de hoy.</p>
           </article>
         </section>
 
-        <section className="page-hero home-section-title">
-          <h2>Partidos que se jugarán hoy</h2>
-          <p>
-            Estos son los encuentros agendados para hoy. Si no hay partidos,
-            también te mostramos los próximos disponibles.
-          </p>
+        <section className="home-section-title">
+          <div>
+            <p className="section-kicker">Calendario</p>
+            <h2>Partidos que se jugarán hoy</h2>
+            <p>
+              Revisa los encuentros de la jornada. Si no hay partidos hoy,
+              mostraremos automáticamente los próximos disponibles.
+            </p>
+          </div>
+          <Link className="section-link" to="/partidos">
+            Ver calendario completo →
+          </Link>
         </section>
 
         {todaysMatches.length > 0 ? (
           <section className="cards-grid" aria-label="Partidos de hoy">
             {todaysMatches.map((match) => (
               <article className="info-card match-card featured-match" key={match.id}>
-                <p className="match-date">Hoy · {match.time}</p>
+                <div className="match-card-top">
+                  <p className="match-date">Hoy · {match.time}</p>
+                  <span className="live-badge">Programado</span>
+                </div>
                 <h3 className="match-teams">
-                  {match.homeTeam} vs {match.awayTeam}
+                  {match.homeTeam} <span>VS</span> {match.awayTeam}
                 </h3>
-                <p>Sede: {match.venue}</p>
+                <div className="match-location">
+                  <span>⌖</span> {match.venue}
+                </div>
               </article>
             ))}
           </section>
         ) : (
           <section className="empty-state" aria-label="Sin partidos para hoy">
-            <h3>No hay partidos programados para hoy.</h3>
-            <p>Estos son los próximos encuentros disponibles:</p>
+            <div className="empty-icon">⚽</div>
+            <div>
+              <h3>No hay partidos programados para hoy.</h3>
+              <p>Estos son los próximos encuentros disponibles:</p>
+            </div>
             <div className="cards-grid">
               {nextMatches.map((match) => (
                 <article className="info-card match-card" key={match.id}>
-                  <p className="match-date">
-                    {match.date} · {match.time}
-                  </p>
+                  <p className="match-date">{match.date} · {match.time}</p>
                   <h3 className="match-teams">
-                    {match.homeTeam} vs {match.awayTeam}
+                    {match.homeTeam} <span>VS</span> {match.awayTeam}
                   </h3>
-                  <p>Sede: {match.venue}</p>
+                  <div className="match-location">
+                    <span>⌖</span> {match.venue}
+                  </div>
                 </article>
               ))}
             </div>
@@ -131,7 +159,6 @@ function HomePage() {
         )}
       </main>
     </div>
-
   );
 }
 
