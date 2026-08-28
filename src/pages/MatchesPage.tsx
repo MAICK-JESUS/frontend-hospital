@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import { scheduledMatches } from "../data/futsalData";
+import { scheduledMatches, teams } from "../data/futsalData";
 import { storageService } from "../services/storageService";
 import "../styles/pages.css";
 
@@ -23,14 +23,24 @@ function MatchesPage() {
     setFormError("");
   }
 
-  function updateEditingMatch(field: "date" | "time" | "venue", value: string) {
+  function updateEditingMatch(field: "date" | "time" | "venue" | "homeTeam" | "awayTeam", value: string) {
     if (!editingMatch) return;
-
     setEditingMatch({ ...editingMatch, [field]: value });
+    setFormError("");
   }
 
   function saveMatch() {
     if (!editingMatch) return;
+
+    if (!editingMatch.homeTeam || !editingMatch.awayTeam) {
+      setFormError("Debes seleccionar los dos equipos.");
+      return;
+    }
+
+    if (editingMatch.homeTeam === editingMatch.awayTeam) {
+      setFormError("Un equipo no puede jugar contra sí mismo.");
+      return;
+    }
 
     const matchesOnSelectedDate = matches.filter((match) => (
       match.id !== editingMatch.id && match.date === editingMatch.date
@@ -55,20 +65,22 @@ function MatchesPage() {
       <Navbar />
       <main className="page-content">
         <section className="page-hero">
+          <p className="section-kicker">Calendario oficial</p>
           <h1>Partidos programados</h1>
-          <p>Consulta y actualiza los encuentros, horarios y sedes de la liga.</p>
+          <p>Consulta y actualiza los encuentros, equipos, horarios y sedes de la liga.</p>
         </section>
 
         <section className="cards-grid" aria-label="Lista de partidos programados">
           {matches.map((match) => (
             <article className="info-card match-card" key={match.id}>
-              <p className="match-date">
-                {match.date} · {match.time}
-              </p>
+              <div className="match-card-top">
+                <p className="match-date">{match.date} · {match.time}</p>
+                <span className="live-badge">Partido</span>
+              </div>
               <h2 className="match-teams">
-                {match.homeTeam} vs {match.awayTeam}
+                {match.homeTeam} <span>VS</span> {match.awayTeam}
               </h2>
-              <p>Sede: {match.venue}</p>
+              <p className="match-location"><span>⌖</span> {match.venue}</p>
               <button className="edit-button" type="button" onClick={() => startEditing(match)}>
                 Editar partido
               </button>
@@ -78,10 +90,54 @@ function MatchesPage() {
 
         {editingMatch && (
           <section className="match-editor" aria-labelledby="match-editor-title">
-            <div>
-              <h2 id="match-editor-title">Editar partido</h2>
-              <p>Solo se pueden programar hasta {MAX_MATCHES_PER_DAY} partidos por día.</p>
+            <div className="match-editor-heading">
+              <div>
+                <p className="section-kicker">Configuración del encuentro</p>
+                <h2 id="match-editor-title">Editar partido #{editingMatch.id}</h2>
+                <p>Selecciona los equipos que disputarán este encuentro y modifica sus datos.</p>
+              </div>
+              <div className="match-preview">
+                <span>Enfrentamiento</span>
+                <strong>{editingMatch.homeTeam} <small>VS</small> {editingMatch.awayTeam}</strong>
+              </div>
             </div>
+
+            <div className="team-selectors">
+              <label className="team-selector home-selector">
+                <span>Equipo local</span>
+                <select
+                  value={editingMatch.homeTeam}
+                  onChange={(event) => updateEditingMatch("homeTeam", event.target.value)}
+                >
+                  <option value="">Selecciona el equipo local</option>
+                  {teams.map((team) => (
+                    <option key={team.name} value={team.name} disabled={team.name === editingMatch.awayTeam}>
+                      {team.name}
+                    </option>
+                  ))}
+                </select>
+                <small>Jugará como local</small>
+              </label>
+
+              <div className="versus-badge">VS</div>
+
+              <label className="team-selector away-selector">
+                <span>Equipo visitante</span>
+                <select
+                  value={editingMatch.awayTeam}
+                  onChange={(event) => updateEditingMatch("awayTeam", event.target.value)}
+                >
+                  <option value="">Selecciona el equipo visitante</option>
+                  {teams.map((team) => (
+                    <option key={team.name} value={team.name} disabled={team.name === editingMatch.homeTeam}>
+                      {team.name}
+                    </option>
+                  ))}
+                </select>
+                <small>Jugará como visitante</small>
+              </label>
+            </div>
+
             <div className="match-editor-fields">
               <label>
                 Fecha
@@ -93,9 +149,10 @@ function MatchesPage() {
               </label>
               <label>
                 Sede
-                <input value={editingMatch.venue} onChange={(event) => updateEditingMatch("venue", event.target.value)} />
+                <input value={editingMatch.venue} onChange={(event) => updateEditingMatch("venue", event.target.value)} placeholder="Ej. Coliseo Central" />
               </label>
             </div>
+
             {formError && <p className="form-error" role="alert">{formError}</p>}
             <div className="player-editor-actions">
               <button className="secondary-button" type="button" onClick={() => setEditingMatch(null)}>Cancelar</button>
