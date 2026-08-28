@@ -137,6 +137,13 @@
   font-weight: 900;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
+
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-mekn9w
+ main
+ main
 .edit-button,
 .primary-button,
 .secondary-button {
@@ -162,6 +169,7 @@
   box-shadow: 0 10px 30px rgba(16, 24, 32, 0.08);
 }
 
+codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
 .match-editor {
   display: grid;
   gap: 20px;
@@ -177,6 +185,10 @@
 .player-editor p,
 .match-editor h2,
 .match-editor p {
+
+.player-editor h2,
+.player-editor p {
+ main
   margin: 0;
 }
 
@@ -185,23 +197,29 @@
   color: #5d6b7a;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
 .match-editor > div:first-child p {
   margin-top: 6px;
   color: #5d6b7a;
 }
 
+
+ main
 .player-editor-fields {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
 .match-editor-fields {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 
+
+ main
 .player-editor label {
   display: grid;
   gap: 7px;
@@ -210,6 +228,7 @@
   font-weight: 800;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
 .match-editor label {
   display: grid;
   gap: 7px;
@@ -218,6 +237,8 @@
   font-weight: 800;
 }
 
+
+ main
 .player-editor input {
   width: 100%;
   padding: 10px 12px;
@@ -226,6 +247,7 @@
   color: #152033;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
 .match-editor input {
   width: 100%;
   padding: 10px 12px;
@@ -240,6 +262,7 @@
   font-weight: 800;
 }
 
+ main
 .player-editor-actions {
   display: flex;
   justify-content: flex-end;
@@ -261,6 +284,14 @@
   color: #344256;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
+
+
+ main
+main
+ main
 @media (max-width: 800px) {
   .table-card {
     overflow-x: auto;
@@ -269,14 +300,29 @@
   .stats-table {
     min-width: 900px;
   }
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
+
+codex/agregar-informacion-de-la-imagen-a-la-tabla-mekn9w
+ main
+ main
 
   .player-editor-fields {
     grid-template-columns: 1fr;
   }
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
 
   .match-editor-fields {
     grid-template-columns: 1fr;
   }
+
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
+
+
+ main
+ main
+ main
 }
 
 .team-count {
