@@ -1,38 +1,3 @@
-export const scheduledMatches = [
-  {
-    id: 1,
-    date: "2026-08-22",
-    time: "18:00",
-    homeTeam: "Halcones FC",
-    awayTeam: "Titanes Norte",
-    venue: "Coliseo Central",
-  },
-  {
-    id: 2,
-    date: "2026-08-19",
-    time: "20:00",
-    homeTeam: "Real Capital",
-    awayTeam: "Unión Andina",
-    venue: "Arena Metropolitana",
-  },
-  {
-    id: 3,
-    date: "2026-08-23",
-    time: "19:30",
-    homeTeam: "Guerreros del Sur",
-    awayTeam: "Atlético Valle",
-    venue: "Polideportivo Municipal",
-  },
-  {
-    id: 4,
-    date: "2026-08-24",
-    time: "20:00",
-    homeTeam: "Futsal Oriente",
-    awayTeam: "Real Capital",
-    venue: "Arena Metropolitana",
-  },
-];
-
 export const teamStandings = [
   { position: 1, team: "Barrio Antioquia", played: 6, won: 6, drawn: 0, lost: 0, goalsFor: 34, goalsAgainst: 12, goalDifference: 22, points: 18 },
   { position: 2, team: "Ignis Fenix", played: 6, won: 5, drawn: 0, lost: 1, goalsFor: 29, goalsAgainst: 13, goalDifference: 16, points: 15 },
@@ -49,6 +14,41 @@ export const teamStandings = [
   { position: 13, team: "Los Socios FC", played: 6, won: 0, drawn: 0, lost: 6, goalsFor: 12, goalsAgainst: 42, goalDifference: -30, points: 0 },
 ];
 
+export const scheduledMatches = [
+  {
+    id: 1,
+    date: "2026-08-30",
+    time: "18:00",
+    homeTeam: "Barrio Antioquia",
+    awayTeam: "Champs FC",
+    venue: "Coliseo Central",
+  },
+  {
+    id: 2,
+    date: "2026-08-30",
+    time: "19:30",
+    homeTeam: "Ignis Fenix",
+    awayTeam: "San Marino",
+    venue: "Arena Metropolitana",
+  },
+  {
+    id: 3,
+    date: "2026-08-31",
+    time: "18:30",
+    homeTeam: "Papoi FC",
+    awayTeam: "Moba FC",
+    venue: "Polideportivo Municipal",
+  },
+  {
+    id: 4,
+    date: "2026-08-31",
+    time: "20:00",
+    homeTeam: "Goat Island",
+    awayTeam: "A.S Godnes",
+    venue: "Coliseo Central",
+  },
+];
+
 export const playerStandings = [
   { position: 1, player: "Mateo Rojas", team: "Barrio Antioquia", goals: 15, assists: 7 },
   { position: 2, player: "Lucas Méndez", team: "Ignis Fenix", goals: 13, assists: 5 },
@@ -58,8 +58,8 @@ export const playerStandings = [
   { position: 6, player: "Emilio Torres", team: "San Marino", goals: 8, assists: 5 },
 ];
 
-export const teams = [
-  { name: "Barrio Antioquia", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Ignis Fenix", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Papoi FC", origin: "Sucre, Bolivia", players: 10 },
-];
+export const teams = teamStandings.map((standing) => ({
+  name: standing.team,
+  origin: "Sucre, Bolivia",
+  players: 10,
+}));
