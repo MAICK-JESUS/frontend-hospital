@@ -9,7 +9,6 @@ export const scheduledMatches = [
   },
   {
     id: 2,
-
     date: "2026-08-19",
     time: "20:00",
     homeTeam: "Real Capital",
@@ -31,14 +30,6 @@ export const scheduledMatches = [
     homeTeam: "Futsal Oriente",
     awayTeam: "Real Capital",
     venue: "Arena Metropolitana",
-  },
-  {
-    id: 5,
-    date: "2026-08-25",
-    time: "17:45",
-    homeTeam: "Deportivo Costa",
-    awayTeam: "Unión Andina",
-    venue: "Complejo La Costa",
   },
 ];
 
@@ -71,14 +62,4 @@ export const teams = [
   { name: "Barrio Antioquia", origin: "Sucre, Bolivia", players: 10 },
   { name: "Ignis Fenix", origin: "Sucre, Bolivia", players: 10 },
   { name: "Papoi FC", origin: "Sucre, Bolivia", players: 10 },
-  { name: "A.S Godnes", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Goat Island", origin: "Sucre, Bolivia", players: 10 },
-  { name: "San Marino", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Sleiffens", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Arnaldítos FC", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Champs FC", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Moba FC", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Bodo", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Team Plumas", origin: "Sucre, Bolivia", players: 10 },
-  { name: "Los Socios FC", origin: "Sucre, Bolivia", players: 10 },
 ];
