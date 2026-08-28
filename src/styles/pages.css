@@ -137,9 +137,12 @@
   font-weight: 900;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+
  codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
 
  codex/agregar-informacion-de-la-imagen-a-la-tabla-mekn9w
+ main
  main
 .edit-button,
 .primary-button,
@@ -166,8 +169,26 @@
   box-shadow: 0 10px 30px rgba(16, 24, 32, 0.08);
 }
 
+codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+.match-editor {
+  display: grid;
+  gap: 20px;
+  margin-top: 24px;
+  padding: 24px;
+  border: 1px solid #d7e3ef;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 10px 30px rgba(16, 24, 32, 0.08);
+}
+
+.player-editor h2,
+.player-editor p,
+.match-editor h2,
+.match-editor p {
+
 .player-editor h2,
 .player-editor p {
+ main
   margin: 0;
 }
 
@@ -176,12 +197,29 @@
   color: #5d6b7a;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+.match-editor > div:first-child p {
+  margin-top: 6px;
+  color: #5d6b7a;
+}
+
+
+ main
 .player-editor-fields {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+.match-editor-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+
+ main
 .player-editor label {
   display: grid;
   gap: 7px;
@@ -190,6 +228,17 @@
   font-weight: 800;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+.match-editor label {
+  display: grid;
+  gap: 7px;
+  color: #344256;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+
+ main
 .player-editor input {
   width: 100%;
   padding: 10px 12px;
@@ -198,6 +247,22 @@
   color: #152033;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+.match-editor input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #b8c4d1;
+  border-radius: 9px;
+  color: #152033;
+}
+
+.form-error {
+  margin: 0;
+  color: #b42318;
+  font-weight: 800;
+}
+
+ main
 .player-editor-actions {
   display: flex;
   justify-content: flex-end;
@@ -219,11 +284,14 @@
   color: #344256;
 }
 
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+
  codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
 
 
  main
 main
+ main
 @media (max-width: 800px) {
   .table-card {
     overflow-x: auto;
@@ -232,17 +300,27 @@ main
   .stats-table {
     min-width: 900px;
   }
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+
  codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
 
 codex/agregar-informacion-de-la-imagen-a-la-tabla-mekn9w
+ main
  main
 
   .player-editor-fields {
     grid-template-columns: 1fr;
   }
+ codex/agregar-informacion-de-la-imagen-a-la-tabla-u5fxkh
+
+  .match-editor-fields {
+    grid-template-columns: 1fr;
+  }
+
  codex/agregar-informacion-de-la-imagen-a-la-tabla-gekcat
 
 
+ main
  main
  main
 }
