@@ -22,7 +22,7 @@
   margin: 0 0 0.85rem;
   padding: 0.35rem 0.8rem;
   border-radius: 999px;
-  color: #0f6b86;
+  color: #148a43;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -74,8 +74,8 @@
 }
 
 .login-form__field input:focus {
-  border-color: #1689ad;
-  box-shadow: 0 0 0 4px rgba(22, 137, 173, 0.14);
+  border-color: #20a653;
+  box-shadow: 0 0 0 4px rgba(32, 166, 83, 0.14);
   transform: translateY(-1px);
 }
 
@@ -98,8 +98,8 @@
   color: #ffffff;
   font-weight: 800;
   letter-spacing: 0.01em;
-  background: linear-gradient(135deg, #0f6b86, #13a4a2);
-  box-shadow: 0 1rem 1.8rem rgba(15, 107, 134, 0.25);
+  background: linear-gradient(135deg, #148a43, #25b85c);
+  box-shadow: 0 1rem 1.8rem rgba(20, 138, 67, 0.25);
   transition:
     box-shadow 180ms ease,
     transform 180ms ease,
@@ -107,7 +107,7 @@
 }
 
 .login-form__button:hover {
-  box-shadow: 0 1.15rem 2.1rem rgba(15, 107, 134, 0.32);
+  box-shadow: 0 1.15rem 2.1rem rgba(20, 138, 67, 0.32);
   filter: saturate(1.08);
   transform: translateY(-2px);
 }
