@@ -8,24 +8,23 @@ import type {
 
 
 const SESSION_KEY = "app_session";
-
-
 const users = initialUsers as UserRecord[];
 
 
 export const authRepository = {
   login(credentials: LoginCredentials): User | null {
+    const normalizedEmail = credentials.email.trim().toLowerCase();
+
     const foundUser = users.find(
       (user) =>
-        user.email.toLowerCase() === credentials.email &&
+        user.role === "ADMIN" &&
+        user.email.toLowerCase() === normalizedEmail &&
         user.password === credentials.password
     );
-
 
     if (!foundUser) {
       return null;
     }
-
 
     const sessionUser: User = {
       id: foundUser.id,
@@ -35,9 +34,7 @@ export const authRepository = {
       role: foundUser.role,
     };
 
-
     storageService.set<User>(SESSION_KEY, sessionUser);
-
 
     return sessionUser;
   },
@@ -54,6 +51,7 @@ export const authRepository = {
 
 
   isAuthenticated(): boolean {
-    return this.getCurrentUser() !== null;
+    const user = this.getCurrentUser();
+    return user?.role === "ADMIN";
   },
 };
