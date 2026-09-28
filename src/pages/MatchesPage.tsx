@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { scheduledMatches, teams } from "../data/futsalData";
+import { authRepository } from "../repositories/authRepository";
 import { storageService } from "../services/storageService";
 import "../styles/pages.css";
 
@@ -17,20 +18,22 @@ function MatchesPage() {
   const [matches, setMatches] = useState<ScheduledMatch[]>(getInitialMatches);
   const [editingMatch, setEditingMatch] = useState<ScheduledMatch | null>(null);
   const [formError, setFormError] = useState("");
+  const isAdmin = authRepository.isAuthenticated();
 
   function startEditing(match: ScheduledMatch) {
+    if (!isAdmin) return;
     setEditingMatch({ ...match });
     setFormError("");
   }
 
   function updateEditingMatch(field: "date" | "time" | "venue" | "homeTeam" | "awayTeam", value: string) {
-    if (!editingMatch) return;
+    if (!editingMatch || !isAdmin) return;
     setEditingMatch({ ...editingMatch, [field]: value });
     setFormError("");
   }
 
   function saveMatch() {
-    if (!editingMatch) return;
+    if (!editingMatch || !isAdmin) return;
 
     if (!editingMatch.homeTeam || !editingMatch.awayTeam) {
       setFormError("Debes seleccionar los dos equipos.");
@@ -42,18 +45,18 @@ function MatchesPage() {
       return;
     }
 
-    const matchesOnSelectedDate = matches.filter((match) => (
-      match.id !== editingMatch.id && match.date === editingMatch.date
-    ));
+    const matchesOnSelectedDate = matches.filter(
+      (match) => match.id !== editingMatch.id && match.date === editingMatch.date
+    );
 
     if (matchesOnSelectedDate.length >= MAX_MATCHES_PER_DAY) {
       setFormError(`Solo se permiten ${MAX_MATCHES_PER_DAY} partidos por día. Selecciona otra fecha.`);
       return;
     }
 
-    const updatedMatches = matches.map((match) => (
+    const updatedMatches = matches.map((match) =>
       match.id === editingMatch.id ? editingMatch : match
-    ));
+    );
 
     setMatches(updatedMatches);
     storageService.set(MATCHES_STORAGE_KEY, updatedMatches);
@@ -67,7 +70,7 @@ function MatchesPage() {
         <section className="page-hero">
           <p className="section-kicker">Calendario oficial</p>
           <h1>Partidos programados</h1>
-          <p>Consulta y actualiza los encuentros, equipos, horarios y sedes de la liga.</p>
+          <p>Consulta los encuentros. Solo el administrador puede modificar equipos, horarios y sedes.</p>
         </section>
 
         <section className="cards-grid" aria-label="Lista de partidos programados">
@@ -81,20 +84,22 @@ function MatchesPage() {
                 {match.homeTeam} <span>VS</span> {match.awayTeam}
               </h2>
               <p className="match-location"><span>⌖</span> {match.venue}</p>
-              <button className="edit-button" type="button" onClick={() => startEditing(match)}>
-                Editar partido
-              </button>
+              {isAdmin && (
+                <button className="edit-button" type="button" onClick={() => startEditing(match)}>
+                  Editar partido
+                </button>
+              )}
             </article>
           ))}
         </section>
 
-        {editingMatch && (
+        {isAdmin && editingMatch && (
           <section className="match-editor" aria-labelledby="match-editor-title">
             <div className="match-editor-heading">
               <div>
                 <p className="section-kicker">Configuración del encuentro</p>
                 <h2 id="match-editor-title">Editar partido #{editingMatch.id}</h2>
-                <p>Selecciona los equipos que disputarán este encuentro y modifica sus datos.</p>
+                <p>Selecciona los equipos y modifica sus datos.</p>
               </div>
               <div className="match-preview">
                 <span>Enfrentamiento</span>
@@ -105,10 +110,7 @@ function MatchesPage() {
             <div className="team-selectors">
               <label className="team-selector home-selector">
                 <span>Equipo local</span>
-                <select
-                  value={editingMatch.homeTeam}
-                  onChange={(event) => updateEditingMatch("homeTeam", event.target.value)}
-                >
+                <select value={editingMatch.homeTeam} onChange={(event) => updateEditingMatch("homeTeam", event.target.value)}>
                   <option value="">Selecciona el equipo local</option>
                   {teams.map((team) => (
                     <option key={team.name} value={team.name} disabled={team.name === editingMatch.awayTeam}>
@@ -123,10 +125,7 @@ function MatchesPage() {
 
               <label className="team-selector away-selector">
                 <span>Equipo visitante</span>
-                <select
-                  value={editingMatch.awayTeam}
-                  onChange={(event) => updateEditingMatch("awayTeam", event.target.value)}
-                >
+                <select value={editingMatch.awayTeam} onChange={(event) => updateEditingMatch("awayTeam", event.target.value)}>
                   <option value="">Selecciona el equipo visitante</option>
                   {teams.map((team) => (
                     <option key={team.name} value={team.name} disabled={team.name === editingMatch.homeTeam}>
@@ -139,18 +138,9 @@ function MatchesPage() {
             </div>
 
             <div className="match-editor-fields">
-              <label>
-                Fecha
-                <input type="date" value={editingMatch.date} onChange={(event) => updateEditingMatch("date", event.target.value)} />
-              </label>
-              <label>
-                Hora
-                <input type="time" value={editingMatch.time} onChange={(event) => updateEditingMatch("time", event.target.value)} />
-              </label>
-              <label>
-                Sede
-                <input value={editingMatch.venue} onChange={(event) => updateEditingMatch("venue", event.target.value)} placeholder="Ej. Coliseo Central" />
-              </label>
+              <label>Fecha<input type="date" value={editingMatch.date} onChange={(event) => updateEditingMatch("date", event.target.value)} /></label>
+              <label>Hora<input type="time" value={editingMatch.time} onChange={(event) => updateEditingMatch("time", event.target.value)} /></label>
+              <label>Sede<input value={editingMatch.venue} onChange={(event) => updateEditingMatch("venue", event.target.value)} placeholder="Ej. Coliseo Central" /></label>
             </div>
 
             {formError && <p className="form-error" role="alert">{formError}</p>}
