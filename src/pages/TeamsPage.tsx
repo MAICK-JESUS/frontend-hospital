@@ -16,23 +16,26 @@ function getInitialTeams(): Team[] {
 function TeamsPage() {
   const [teams, setTeams] = useState<Team[]>(getInitialTeams);
   const [editingTeam, setEditingTeam] = useState<Team | null>(null);
+  const [editingTeamName, setEditingTeamName] = useState("");
   const isAdmin = authRepository.isAuthenticated();
 
   function startEditing(team: Team) {
     if (!isAdmin) return;
     setEditingTeam({ ...team });
+    setEditingTeamName(team.name);
   }
 
   function saveTeam() {
     if (!editingTeam || !isAdmin) return;
 
     const updated = teams.map((team) =>
-      team.name === editingTeam.name ? editingTeam : team
+      team.name === editingTeamName ? editingTeam : team
     );
 
     setTeams(updated);
     storageService.set(TEAMS_STORAGE_KEY, updated);
     setEditingTeam(null);
+    setEditingTeamName("");
   }
 
   return (
@@ -75,7 +78,7 @@ function TeamsPage() {
               <label>Jugadores<input type="number" min="0" value={editingTeam.players} onChange={(event) => setEditingTeam({ ...editingTeam, players: Math.max(0, Number(event.target.value)) })} /></label>
             </div>
             <div className="player-editor-actions">
-              <button className="secondary-button" type="button" onClick={() => setEditingTeam(null)}>Cancelar</button>
+              <button className="secondary-button" type="button" onClick={() => { setEditingTeam(null); setEditingTeamName(""); }}>Cancelar</button>
               <button className="primary-button" type="button" onClick={saveTeam}>Guardar cambios</button>
             </div>
           </section>
