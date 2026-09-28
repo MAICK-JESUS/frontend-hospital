@@ -6,13 +6,5 @@
     "email": "admin@hospital.com",
     "password": "admin123",
     "role": "ADMIN"
-  },
-  {
-    "id": "user-2",
-    "name": "Usuario de prueba",
-    "carnet": "7654321",
-    "email": "usuario@hospital.com",
-    "password": "usuario123",
-    "role": "USUARIO"
   }
 ]
